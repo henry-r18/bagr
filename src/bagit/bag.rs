@@ -323,7 +323,7 @@ where
     let mut file_meta = Vec::new();
     let mut dirs = Vec::new();
 
-    for file in WalkDir::new(src_dir).into_iter().filter_entry(predicate) {
+    for file in WalkDir::new(src_dir).follow_links(true).into_iter().filter_entry(predicate) {
         let file = file.context(WalkFileSnafu {})?;
 
         if !include_hidden_files && is_hidden_file(file.file_name()) {
@@ -447,7 +447,7 @@ where
     let base_dir = base_dir.as_ref();
     let mut file_meta = Vec::new();
 
-    for file in WalkDir::new(base_dir).into_iter().filter_entry(predicate) {
+    for file in WalkDir::new(base_dir).follow_links(true).into_iter().filter_entry(predicate) {
         let file = file.context(WalkFileSnafu {})?;
 
         if file.file_type().is_file() {
