@@ -13,24 +13,26 @@ use crate::bagit::error::*;
 use crate::bagit::io::{is_space_or_tab, TagLineReader};
 use crate::bagit::Error::*;
 
+use serde::{Deserialize, Serialize};
+
 #[derive(Debug)]
 pub struct BagDeclaration {
     version: BagItVersion,
     encoding: String,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct BagInfo {
     tags: TagList,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct Tag {
     label: String,
     value: String,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct TagList {
     tags: Vec<Tag>,
 }
