@@ -13,7 +13,7 @@ use crate::bagit::error::*;
 use crate::bagit::io::{is_space_or_tab, TagLineReader};
 use crate::bagit::Error::*;
 
-use serde::de::Deserialize;
+use serde::Deserialize;
 
 #[derive(Debug)]
 pub struct BagDeclaration {
